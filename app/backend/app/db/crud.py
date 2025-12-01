@@ -1,11 +1,12 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from sqlalchemy.sql import text
-from . import models, schema
+from .models import Course as DbCourse
+from ..schemas.courseModels import CreateCourse, UpdateCourse
 
 
-async def create_course(db: AsyncSession, course: schema.CreateCourse) -> models.Course:
-    db_course = models.Course(
+async def create_course(db: AsyncSession, course: CreateCourse) -> DbCourse:
+    db_course = DbCourse(
         title=course.title,
         level=course.level,
         duration=course.duration,
@@ -18,19 +19,23 @@ async def create_course(db: AsyncSession, course: schema.CreateCourse) -> models
     return db_course
 
 
-async def get_all_courses(db: AsyncSession, skip: int = 0, limit: int = 10) -> list[models.Course]:
-    res = await db.execute(select(models.Course).offset(skip).limit(limit))
+async def get_all_courses(
+    db: AsyncSession, skip: int = 0, limit: int = 10
+) -> list[DbCourse]:
+    res = await db.execute(select(DbCourse).offset(skip).limit(limit))
     return res.scalars().all()
 
 
-async def get_one_course(db: AsyncSession, course_id: int) -> models.Course | None:
-    res = await db.execute(select(models.Course).where(models.Course.id == course_id))
-    return res.one()
+async def get_one_course(db: AsyncSession, course_id: int) -> DbCourse | None:
+    res = await db.execute(select(DbCourse).where(DbCourse.id == course_id))
+    return res.scalar_one_or_none()
 
 
-async def update_course(db: AsyncSession, course_id: int, to_update: schema.UpdateCourse) -> models.Course | None:
-    res = await db.execute(select(models.Course).filter(models.Course.id == course_id))
-    course = res.one()
+async def update_course(
+    db: AsyncSession, course_id: int, to_update: UpdateCourse
+) -> DbCourse | None:
+    res = await db.execute(select(DbCourse).where(DbCourse.id == course_id))
+    course = res.scalar_one_or_none()
     if not course:
         return None
     for key, value in to_update.model_dump(exclude_unset=True).items():
@@ -40,9 +45,9 @@ async def update_course(db: AsyncSession, course_id: int, to_update: schema.Upda
     return course
 
 
-async def delete_course(db: AsyncSession, course_id: int) -> models.Course | None:
-    res = await db.execute(select((models.Course).filter(models.Course.id == course_id).first()))
-    course = res.scalars().first()
+async def delete_course(db: AsyncSession, course_id: int) -> DbCourse | None:
+    res = await db.execute(select(DbCourse).where(DbCourse.id == course_id))
+    course = res.scalar_one_or_none()
     if not course:
         return None
     await db.delete(course)

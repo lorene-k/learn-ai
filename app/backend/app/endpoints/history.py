@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
-from ..models import CourseResponse
+from ..schemas.courseModels import CourseResponse
 from ..dependencies.db import get_db
 from ..db.crud import get_all_courses
 

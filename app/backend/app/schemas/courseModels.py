@@ -3,6 +3,12 @@ from datetime import datetime
 from typing import Optional
 
 
+class CourseRequest(BaseModel):
+    topic: str
+    level: str
+    duration: int  # duration in minutes
+
+
 class CourseBase(BaseModel):
     title: str
     level: str
@@ -33,3 +39,9 @@ class UpdateCourse(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+# class Lesson(BaseModel):
+#     title: str
+#     content: str
+#     links: Optional[str]

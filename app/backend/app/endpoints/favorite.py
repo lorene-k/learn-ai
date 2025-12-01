@@ -1,9 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
-from ..models import CourseResponse
 from ..dependencies.db import get_db
 from ..db.crud import update_course
-from ..db.schema import UpdateCourse
+from ..schemas.courseModels import UpdateCourse, CourseResponse
 
 router = APIRouter(tags=["courses"], responses={404: {"description": "Not found"}})
 

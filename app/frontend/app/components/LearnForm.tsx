@@ -1,12 +1,12 @@
 "use client";
 import { useState } from 'react';
 import { useRouter } from "next/navigation";
-import { Button, Box, SelectChangeEvent, Typography } from '@mui/material';
-import type { CourseRequest } from "../types/types";
+import { Button, Box, Typography } from '@mui/material';
 import { TextInput } from './TextInput';
 import { RadioInput } from './RadioInput';
 import { SelectInput } from './SelectInput';
 import { useGenerateCourse } from '../hooks/useGenerateCourse';
+import type { CourseRequest } from "../types/types";
 
 export function LearnForm() {
     const router = useRouter();
@@ -34,6 +34,7 @@ export function LearnForm() {
         setFormError(false);
         generateCourseMutation.mutate(courseRequest, {
             onSuccess: (data) => {
+                console.log("Course generated with ID: ", data.id);
                 setGenerateError(false);
                 router.push(`/course/${data.id}`);
             },
