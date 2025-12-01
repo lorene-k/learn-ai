@@ -2,7 +2,7 @@
 import { useMutation } from "@tanstack/react-query";
 import type { CourseRequest } from "../types/types";
 
-const ENDPOINT = "/api/course";
+const ENDPOINT = "/api/course/generate";
 
 export function useGenerateCourse() {
     return useMutation<{ id: string }, Error, CourseRequest>({

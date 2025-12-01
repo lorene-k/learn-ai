@@ -7,7 +7,6 @@ export interface CourseRequest {
 export interface Lesson {
     title: string;
     content: string;
-    links?: string[];
 }
 
 export interface CourseResponse {

@@ -12,7 +12,7 @@ import { Loader } from "../../components/Loader"
 export default function ShowCourse() {
     const router = useRouter();
     const id = useParams().id as string;
-    const { data: course, isLoading, isError, error } = useCourse(id);T
+    const { data: course, isLoading, isError, error } = useCourse(id);
 
     if (isLoading) return <Loader message="Fetching course..."/>;
     if (isError || !course)

@@ -44,4 +44,3 @@ class UpdateCourse(BaseModel):
 # class Lesson(BaseModel):
 #     title: str
 #     content: str
-#     links: Optional[str]

@@ -19,7 +19,7 @@ class PostgresSettings(BaseModel):
 class AppSettings(BaseSettings):
     db: PostgresSettings
     OLLAMA_URL: str | None = None
-    OLLAMA_MODEL: str = "qwen2.5:1.5b"  # OR mistral-small-2506
+    OLLAMA_MODEL: str = "qwen3-vl:2b"  # OR mistral-small-2506
 
     model_config = SettingsConfigDict(
         env_file=".env",
