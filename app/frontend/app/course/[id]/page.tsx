@@ -12,7 +12,7 @@ import { Loader } from "../../components/Loader"
 export default function ShowCourse() {
     const router = useRouter();
     const id = useParams().id as string;
-    const { data: course, isLoading, isError, error } = useCourse(id);
+    const { data: course, isLoading, isError, error } = useCourse(id);T
 
     if (isLoading) return <Loader message="Fetching course..."/>;
     if (isError || !course)
@@ -55,4 +55,4 @@ export default function ShowCourse() {
 }
 
 // ADD LESSONS LATER
-// Add `*%^¨*£%%star icon click event to add course to favs
+// Add star icon click event to add course to favs

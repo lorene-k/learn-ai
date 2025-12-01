@@ -1,15 +1,14 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 from ..dependencies.db import get_db
-from ..db.crud import create_course
-from ..schemas.courseModels import CourseRequest, CreateCourse
+from ..db.crud import create_course, get_one_course
+from ..schemas.courseModels import CourseRequest, CreateCourse, CourseResponse
 
 router = APIRouter(tags=["courses"], responses={404: {"description": "Not found"}})
 
+
 @router.post("/course", response_model=dict)
-async def generate_course(
-    request: CourseRequest,
-    db: AsyncSession = Depends(get_db)):
+async def generate_course(request: CourseRequest, db: AsyncSession = Depends(get_db)):
     # prompt = (
     #     f"Generate a {request.level} level course on the topic of {request.topic} "
     #     f"that lasts approximately {request.duration}. Include a course title, "
@@ -37,4 +36,9 @@ async def generate_course(
     return {"id": db_course.id}
 
 
-# ! API call to create CourseResponse
+@router.get("/course/{course_id}", response_model=CourseResponse)
+async def get_course(course_id: int, db: AsyncSession = Depends(get_db)):
+    db_course = await get_one_course(db, int(course_id))
+    if not db_course:
+        raise HTTPException(status_code=404, detail="Course not found")
+    return db_course

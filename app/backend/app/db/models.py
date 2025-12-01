@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String, TIMESTAMP, Boolean, text
 from sqlalchemy.ext.declarative import declarative_base
+from app.core.config import app_env_settings as settings
 
 
 Base = declarative_base()
@@ -7,6 +8,7 @@ Base = declarative_base()
 
 class Course(Base):
     __tablename__ = "courses"
+    __table_args__ = {"schema": settings.db.POSTGRES_SCHEMA}
 
     id = Column(Integer, primary_key=True, index=True, nullable=False)
     created_at = Column(
@@ -16,5 +18,5 @@ class Course(Base):
     level = Column(String, index=True, nullable=False)
     duration = Column(Integer, nullable=False)
     description = Column(String, index=True, nullable=False)
-    # lessons = Column(String, nullable=False)  # Could be JSON string
     is_favorite = Column(Boolean, server_default="FALSE")
+    # lessons = Column(String, nullable=False)  # Could be JSON string
