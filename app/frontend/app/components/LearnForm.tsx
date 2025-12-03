@@ -76,3 +76,6 @@ export function LearnForm() {
         </Box>
     )
 }
+
+// sx={{ boxShadow: 3, p: 4, borderRadius: 2, bgcolor: 'blue', width: '300px'}}
+//  boxShadow: 3, display: 'flex', flexDirection: 'column', gap: 2, width: '300px', margin: 'auto', mt: 10, 
