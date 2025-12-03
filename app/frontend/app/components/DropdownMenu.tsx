@@ -42,7 +42,7 @@ export function DropdownMenu() {
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleMenuClick}
-                sx={{ m: 4, color: 'white' }}
+                sx={{ color: 'white' }}
             >
             <MenuSharpIcon></MenuSharpIcon>
             </IconButton>
