@@ -19,11 +19,29 @@ export function SelectInput({ name, value, labels, onChange }: SelectInputProps)
                 name={name}
                 label={sectionLabel}
                 onChange={onChange}
-                value={value}>
+                value={value}
+                sx={{
+                    color: 'white',
+                    '.MuiSelect-icon': { color: 'white' },
+                    '& .MuiOutlinedInput-notchedOutline': { borderColor: 'white' },
+                }}
+            >
                 {labels.map((label) => (
-                    <MenuItem key={label} value={label}>{label}</MenuItem>
+                    <MenuItem
+                        key={label}
+                        value={label}
+                        sx={{
+                            color: 'black',
+                            '&.Mui-selected': {
+                                color: 'white',
+                                backgroundColor: 'primary.main',
+                            },
+                        }}
+                    >
+                        {label}
+                    </MenuItem>
                 ))}
             </Select>
-        </FormControl>
+        </FormControl >
     );
 }

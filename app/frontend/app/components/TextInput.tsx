@@ -1,5 +1,5 @@
 "use client";
-import { FormControl, InputLabel, Input, FormHelperText } from '@mui/material';
+import { FormControl, InputLabel, OutlinedInput, FormHelperText } from '@mui/material';
 
 interface TextInputProps {
     name: string;
@@ -15,7 +15,8 @@ export function TextInput({ name, value, error, helperText, onChange }: TextInpu
     return (
         <FormControl error={error}>
             <InputLabel htmlFor={name}>{label}</InputLabel>
-            <Input name={name} id={name} value={value} onChange={onChange} />
+            <OutlinedInput name={name} id={name} value={value} onChange={onChange} label={label}
+                sx={{ borderRadius: 2, '& .MuiOutlinedInput-notchedOutline': { borderColor: 'white', },}} />
             {error && <FormHelperText>{helperText}</FormHelperText>}
         </FormControl>
     );

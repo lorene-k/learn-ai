@@ -5,7 +5,7 @@ import { Box } from '@mui/material';
 
 export default function Home() {
     return (
-        <Box>
+        <Box sx={{ minHeight: '100vh', background: 'linear-gradient(180deg, #4A00E0 0%, #000000 100%)', }} >
             <DropdownMenu />
             <LearnForm />
         </Box>

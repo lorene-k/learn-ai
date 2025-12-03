@@ -42,25 +42,30 @@ export function DropdownMenu() {
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleMenuClick}
-                sx={{ mt: 2, ml: 2 }}
+                sx={{ m: 4, color: 'white' }}
             >
-                <MenuSharpIcon>Dashboard</MenuSharpIcon>
+            <MenuSharpIcon></MenuSharpIcon>
             </IconButton>
             <Menu
                 id="basic-menu"
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleClose}
-                slotProps={{
-                    list: {
-                        'aria-labelledby': 'basic-button',
+                slotProps={{ list: { 'aria-labelledby': 'basic-button', }, }}
+                sx={{
+                    '& .MuiMenuItem-root': {
+                        color: 'black', '&:hover': {
+                            backgroundColor: 'primary.main',
+                            color: 'white',
+                        },
                     },
+                    fontWeight: 'medium',
                 }}
             >
-                <MenuItem onClick={() => handleItemClick("home")}>Home</MenuItem>
-                <MenuItem onClick={() => handleItemClick("history")}>History</MenuItem>
-                <MenuItem onClick={() => handleItemClick("favorites")}>Favorites</MenuItem>
-            </Menu>
-        </div>
+            <MenuItem onClick={() => handleItemClick("home")}>Home</MenuItem>
+            <MenuItem onClick={() => handleItemClick("history")}>History</MenuItem>
+            <MenuItem onClick={() => handleItemClick("favorites")}>Favorites</MenuItem>
+        </Menu>
+        </div >
     );
 }

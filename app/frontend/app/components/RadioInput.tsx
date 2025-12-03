@@ -11,14 +11,14 @@ interface RadioInputProps {
 export function RadioInput({ name, value, labels, onChange }: RadioInputProps) {
     const sectionLabel = name.charAt(0).toUpperCase() + name.slice(1);
     return (
-        <FormControl>
+        <FormControl sx={{ border: 1, borderColor: 'white', borderRadius: 2, p: 2}}>
             <FormLabel id={name}>{sectionLabel}</FormLabel>
             <RadioGroup value={value} name={name} onChange={onChange}>
                 {labels.map((label) => (
                     <FormControlLabel
                         key={label}
                         value={label.toLowerCase()}
-                        control={<Radio />}
+                        control={<Radio/>}
                         label={label}
                     />
                 ))}
