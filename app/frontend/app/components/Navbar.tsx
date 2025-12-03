@@ -10,7 +10,7 @@ export function Navbar() {
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: 'white', ml: 4 }}>
                         Learn.ai
                     </Typography>
-                    {/* <Button sx={{ color: 'black' }}>Login</Button> */}
+                    <Button sx={{ color: 'white' }}>Login</Button>
                 </Toolbar>
             </AppBar>
         </Box>

@@ -50,7 +50,7 @@ export function LearnForm() {
         <Box>
             <Box component="form"
                 onSubmit={handleSubmit}
-                sx={{ display: 'flex', flexDirection: 'column', gap: 2, width: '400px', margin: 'auto', mt: 10, p: 3, borderRadius: 2}}
+                sx={{ display: 'flex', flexDirection: 'column', gap: 2, width: '400px', height:'800px', margin: 'auto', mt: 10, p: 3, borderRadius: 2}}
             >
                 <TextInput name="topic"
                     error={formError}
@@ -76,6 +76,3 @@ export function LearnForm() {
         </Box>
     )
 }
-
-// sx={{ boxShadow: 3, p: 4, borderRadius: 2, bgcolor: 'blue', width: '300px'}}
-//  boxShadow: 3, display: 'flex', flexDirection: 'column', gap: 2, width: '300px', margin: 'auto', mt: 10, 
