@@ -20,9 +20,8 @@ export default function ShowCourse() {
     const { title, level, duration, description, is_favorite } = course as CourseResponse;
 
     return (
-        <Box>
-            <Navbar />
-            <Box sx={{ maxWidth: 800, mx: "auto", mt: 4, px: 2, mb: 1 }}>
+        <Box sx={{ height: "100vh", width: "100%" }}>
+            <Box sx={{ maxWidth: 800, mx: "auto", mt: 4, px: 2, mb: 1}}>
                 <IconButton onClick={() => router.back()}>
                     <ArrowBackIcon sx={{ color:"white"}} />
                 </IconButton>
