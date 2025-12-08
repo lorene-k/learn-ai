@@ -27,3 +27,35 @@ export const theme = createTheme({
         },
     },
 });
+
+// const theme = createTheme({
+//   components: {
+//     MuiButton: {
+//       styleOverrides: {
+//         root: {
+//           borderRadius: 8, // applies to all buttons
+//         },
+//         contained: {
+//           backgroundColor: "#FF6F61",
+//           color: "#fff",
+//           "&:hover": {
+//             backgroundColor: "#E85B50",
+//           },
+//         },
+//         text: {
+//           color: "#FF6F61",
+//           "&:hover": {
+//             backgroundColor: "rgba(255,111,97,0.1)",
+//           },
+//         },
+//         outlined: {
+//           borderColor: "#FF6F61",
+//           color: "#FF6F61",
+//           "&:hover": {
+//             backgroundColor: "rgba(255,111,97,0.1)",
+//           },
+//         },
+//       },
+//     },
+//   },
+// });
