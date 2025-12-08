@@ -48,9 +48,12 @@ export function LearnForm() {
 
     return (
         <Box>
+            <Typography variant="h2" sx={{ textAlign: 'center'}}>
+                Generate your Course
+            </Typography>
             <Box component="form"
                 onSubmit={handleSubmit}
-                sx={{ display: 'flex', flexDirection: 'column', gap: 2, width: '400px', height: '800px', margin: 'auto', mt: 10, p: 3, borderRadius: 2 }}
+                sx={{ display: 'flex', flexDirection: 'column', gap: 2, width: '400px', height: '800px', margin: 'auto', p: 3, borderRadius: 2 }}
             >
                 <TextInput name="topic"
                     error={formError}
@@ -66,7 +69,7 @@ export function LearnForm() {
                     value={formDuration}
                     labels={["5", "10", "20", "30"]}
                     onChange={(e) => setDuration(e.target.value)} />
-                <Button type="submit" variant="contained" sx={{ fontWeight: '500' }}>Learn now</Button>
+                <Button type="submit" variant="contained" sx={{ fontWeight: '600' }}>Learn now</Button>
             </Box>
             {generateError && (
                 <Typography variant="body2" color="error" sx={{ textAlign: 'center', mt: 5 }}>
