@@ -17,12 +17,6 @@ A simple web app designed to make learning easier by generating personalized cou
 - The project is configured to serve all traffic over HTTPS for secure connections.
 
 
-## Usage
-0. **On MacOS: install Ollama**
-```bash
-brew install ollama
-```
-
 1. **Installation**
 ```bash
 git clone https://github.com/lorene-k/learn-ai.git

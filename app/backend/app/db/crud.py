@@ -53,27 +53,3 @@ async def delete_course(db: AsyncSession, course_id: int) -> DbCourse | None:
     await db.delete(course)
     await db.commit()
     return course
-
-
-### USAGE
-# @app.get("/courses/")
-# def list_courses(page: int = 1, page_size: int = 10, db: Session = Depends(get_db)):
-#     return crud.get_courses_paginated(db, page, page_size)
-
-# @app.get("/courses/{course_id}")
-# def read_course(course_id: int, db: Session = Depends(get_db)):
-#     course = crud.get_course(db, course_id)
-#     if not course:
-#         raise HTTPException(status_code=404, detail="Course not found")
-#     return course
-
-# @app.put("/courses/{course_id}")
-# def update_course_route(course_id: int, course_update: schemas.UpdateCourse, db: Session = Depends(get_db)):
-#     return crud.update_course(db, course_id, course_update.dict())
-
-# @app.delete("/courses/{course_id}")
-# def delete_course_route(course_id: int, db: Session = Depends(get_db)):
-#     success = crud.delete_course(db, course_id)
-#     if not success:
-#         raise HTTPException(status_code=404, detail="Course not found")
-#     return {"ok": True}

@@ -4,7 +4,7 @@ export interface CourseRequest {
     duration: number; // in minutes
 }
 
-export interface Lesson {
+export interface Chapter {
     title: string;
     content: string;
 }
@@ -17,7 +17,7 @@ export interface CourseResponse {
     duration: string;
     description: string;
     is_favorite: boolean;
-    // lessons: Lesson[];
+    lessons: Chapter[];
 }
 
 export interface FormData {

@@ -11,7 +11,7 @@ SERVICES =
 endif
 
 # ------------  RULES  ------------------------------------------------------ #
-all:			prod
+all:			dev
 
 dev:
 				@$(MAKE) TARGET=dev up

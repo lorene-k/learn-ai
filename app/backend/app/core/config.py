@@ -10,7 +10,7 @@ class PostgresSettings(BaseModel):
     POSTGRES_PORT: int
     POSTGRES_DB: str
     POSTGRES_SCHEMA: str = ""
-    DEBUG: bool = True  # Set to False in prod
+    DEBUG: bool = True  # Prod: set to False
     POOL_SIZE: int = 5
     POOL_RECYCLE: int = 3600
     MAX_OVERFLOW: int = 10
@@ -18,8 +18,10 @@ class PostgresSettings(BaseModel):
 
 class AppSettings(BaseSettings):
     db: PostgresSettings
-    OLLAMA_URL: str | None = None
-    OLLAMA_MODEL: str = "qwen3-vl:2b"  # OR mistral-small-2506
+    OLLAMA_URL: str | None = (
+        "http://host.docker.internal:11434"  #  Prod: change to "http://ollama:11434"
+    )
+    OLLAMA_MODEL: str = "qwen3-vl:2b"
 
     model_config = SettingsConfigDict(
         env_file=".env",
@@ -30,10 +32,3 @@ class AppSettings(BaseSettings):
 
 
 app_env_settings = AppSettings()
-
-
-if not app_env_settings.OLLAMA_URL:
-    if platform.system() == "Darwin":
-        app_env_settings.OLLAMA_URL = "http://host.docker.internal:11434"
-    else:
-        app_env_settings.OLLAMA_URL = "http://ollama:11434"
