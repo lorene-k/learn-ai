@@ -11,7 +11,7 @@ async def create_course(db: AsyncSession, course: CreateCourse) -> DbCourse:
         level=course.level,
         duration=course.duration,
         description=course.description,
-        # lessons=course.lessons,
+        chapters=[chapter.model_dump() for chapter in course.chapters],
     )
     db.add(db_course)
     await db.commit()

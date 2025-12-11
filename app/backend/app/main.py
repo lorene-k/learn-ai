@@ -1,9 +1,9 @@
 from fastapi import FastAPI
-from app.db.database import db_session_manager
 from contextlib import asynccontextmanager
-from .endpoints.course import router as course_router
-from .endpoints.history import router as history_router
-from .endpoints.favorite import router as fav_router
+from app.db.database import db_session_manager
+from app.endpoints.course import router as course_router
+from app.endpoints.history import router as history_router
+from app.endpoints.favorite import router as fav_router
 
 
 @asynccontextmanager

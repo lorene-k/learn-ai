@@ -17,7 +17,7 @@ export interface CourseResponse {
     duration: string;
     description: string;
     is_favorite: boolean;
-    lessons: Chapter[];
+    chapters: Chapter[];
 }
 
 export interface FormData {

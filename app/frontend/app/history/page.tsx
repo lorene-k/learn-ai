@@ -19,7 +19,7 @@ export default function ShowHistory() {
                     <Typography variant="h2" align="center">Course History</Typography>
                     <Box sx={{
                         overflow: 'auto', display: 'flex',
-                        flexDirection: 'column', width: '400px', gap: 1, p: 1,
+                        flexDirection: 'column', width: '600px', gap: 1, p: 1,
                         "&::-webkit-scrollbar": {
                             display: "none",
                         },

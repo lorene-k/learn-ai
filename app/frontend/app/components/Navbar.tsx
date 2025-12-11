@@ -1,3 +1,4 @@
+"use client";
 import { Box, AppBar, Toolbar, IconButton, Typography, Button } from "@mui/material";
 import { DropdownMenu } from "./DropdownMenu";
 

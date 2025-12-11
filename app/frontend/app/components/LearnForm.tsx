@@ -7,6 +7,7 @@ import { RadioInput } from './RadioInput';
 import { SelectInput } from './SelectInput';
 import { useGenerateCourse } from '../hooks/useGenerateCourse';
 import type { CourseRequest } from "../types/types";
+import { Loader } from './Loader';
 
 export function LearnForm() {
     const router = useRouter();
@@ -34,7 +35,6 @@ export function LearnForm() {
         setFormError(false);
         generateCourseMutation.mutate(courseRequest, {
             onSuccess: (data) => {
-                console.log("Course generated with ID: ", data.id);
                 setGenerateError(false);
                 router.push(`/course/${data.id}`);
             },
@@ -48,7 +48,7 @@ export function LearnForm() {
 
     return (
         <Box>
-            <Typography variant="h2" sx={{ textAlign: 'center'}}>
+            <Typography variant="h2" sx={{ textAlign: 'center' }}>
                 Generate your Course
             </Typography>
             <Box component="form"
@@ -71,6 +71,9 @@ export function LearnForm() {
                     onChange={(e) => setDuration(e.target.value)} />
                 <Button type="submit" variant="contained" sx={{ fontWeight: '600' }}>Learn now</Button>
             </Box>
+            {generateCourseMutation.isPending && (
+                <Loader message="Generating your course..." />
+            )}
             {generateError && (
                 <Typography variant="body2" color="error" sx={{ textAlign: 'center', mt: 5 }}>
                     An error occurred while generating the course. Please try again.

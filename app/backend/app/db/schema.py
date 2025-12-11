@@ -1,6 +1,11 @@
 from pydantic import BaseModel
 from datetime import datetime
-from typing import Optional
+from typing import Optional, List
+
+
+class Chapter(BaseModel):
+    title: str
+    content: str
 
 
 class CourseBase(BaseModel):
@@ -9,7 +14,7 @@ class CourseBase(BaseModel):
     duration: int
     description: str
     is_favorite: bool = False
-    # lessons: Optional[list] = []
+    chapters: List[Chapter] = []
 
 
 class CreateCourse(CourseBase):

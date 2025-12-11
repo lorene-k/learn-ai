@@ -1,6 +1,5 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import BaseModel
-import platform
 
 
 class PostgresSettings(BaseModel):

@@ -20,7 +20,7 @@ class CourseBase(BaseModel):
     duration: int
     description: str
     is_favorite: bool = False
-    content: List[Chapter] = []
+    chapters: List[Chapter] = []
 
 
 class CreateCourse(CourseBase):
