@@ -16,14 +16,14 @@ export function EntryButton({ id, title, level, duration }: EntryButtonProps) {
     return (
         <Button
             onClick={() => router.push(`/course/${id}`)}
-            variant="outlined"
+            variant="text"
             sx={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "flex-start",
                 textTransform: "none",
                 color: "white",
-                borderColor: "white",
+                backgroundColor: "rgba(0, 0, 0, 0.2)",
                 textDecoration: "none",
                 "&:hover": {
                     color: "white",

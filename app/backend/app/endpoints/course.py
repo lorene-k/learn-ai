@@ -13,10 +13,12 @@ ollama_client = AsyncClient(host=settings.OLLAMA_URL)
 def set_prompt(request: CourseRequest) -> str:
     return (
         f"Generate a {request.level} level course about {request.topic}."
-        f"It should last approximately {request.duration}."
-        f"Each course should include a descriptive title, and a short description."
-        f"After the title, provide a list of chapters with titles and detailed content for each chapter."
-        f"The number of chapters should be appropriate for the course duration."
+        f"It should last approximately {request.duration} minutes."
+        f"The course MUST include at least 3 chapters."
+        f"A 5-minute course has 3 chapters, adjust the number of chapters if the course lasts longer."
+        f"Each chapter must have a descriptive title and detailed content (at least 2-3 sentences). "
+        f"Provide a clear course title, short description, and well-structured chapters."
+        f"Return ONLY valid JSON matching the schema."
     )
 
 
@@ -27,6 +29,10 @@ async def chat(prompt: str):
         messages=[message],
         stream=False,
         format=CreateCourse.model_json_schema(),
+        options={
+            "temperature": 0.7,
+            "num_predict": 10000,
+        },
     )
     data = CreateCourse.model_validate_json(response.message.content)
     return data
@@ -36,7 +42,6 @@ async def chat(prompt: str):
 async def generate_course(request: CourseRequest, db: AsyncSession = Depends(get_db)):
     prompt = set_prompt(request)
     course = await chat(prompt)
-    print("COURSE CHAPTERS =", course.chapters)  # ! DEBUG
     db_course = await create_course(db, course)
     return {"id": db_course.id}
 

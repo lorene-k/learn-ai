@@ -64,8 +64,8 @@ services:
       - "5432:5432"
 
   ollama:
-    image: ollama/ollama:latest
     container_name: ollama
+    build: ./ollama
     restart: always
     volumes:
       - ollama:/root/.ollama
@@ -73,6 +73,8 @@ services:
       - my_network
     ports:
       - "11434:11434"
+    profiles:
+      - linux
 
 volumes:
   postgres_data:

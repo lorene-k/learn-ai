@@ -20,7 +20,7 @@ class AppSettings(BaseSettings):
     OLLAMA_URL: str | None = (
         "http://host.docker.internal:11434"  #  Prod: change to "http://ollama:11434"
     )
-    OLLAMA_MODEL: str = "qwen3-vl:2b"
+    OLLAMA_MODEL: str = "gemma2:2b"
 
     model_config = SettingsConfigDict(
         env_file=".env",

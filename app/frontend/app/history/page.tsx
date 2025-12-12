@@ -14,17 +14,13 @@ export default function ShowHistory() {
     if (isError) return <Box>Error: {error.message}</Box>;
     return (
         <Box>
-            <Box sx={{ maxWidth: "100%", height: '100vh' }}>
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, width: '100%', margin: 'auto', height: '70vh', alignItems: 'center', justifyContent: 'center' }}>
-                    <Typography variant="h2" align="center">Course History</Typography>
+            <Box sx={{ width: "100%", height: '100vh' }}>
+                <Typography variant="h2" align="center" sx={{ mb: 4 }}>Course History</Typography>
+                <Box sx={{ height: "75vh", width: "100%", overflowY: 'auto' }}>
                     <Box sx={{
-                        overflow: 'auto', display: 'flex',
-                        flexDirection: 'column', width: '600px', gap: 1, p: 1,
-                        "&::-webkit-scrollbar": {
-                            display: "none",
-                        },
-                        msOverflowStyle: "none", scrollbarWidth: "none",
-                        boxShadow: `inset 0 4px 6px -4px rgba(0, 0, 0, 0.2), inset 0 -4px 6px -4px rgba(0,0,0,0.2)`,
+                        display: 'flex', flexDirection: 'column', gap: 2, maxWidth: 800,
+                        mx: "auto", px: 2, backgroundColor: "rgba(0, 0, 0, 0.2)", borderRadius: 2,
+                        py: 4, mb: 4, alignItems: 'center', justifyContent: 'center', alignItems: "stretch",
                     }}>
                         {courses?.map((course) => (
                             <EntryButton

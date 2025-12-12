@@ -3,13 +3,6 @@ COMPOSE		=	docker compose -f
 TARGET		?=	dev
 OS			:=	$(shell uname -s)
 
-# ------------  OLLAMA  ------------------------------------------------------ #
-ifeq ($(OS),Darwin)
-SERVICES = nginx frontend backend db
-else
-SERVICES =
-endif
-
 # ------------  RULES  ------------------------------------------------------ #
 all:			dev
 
@@ -19,13 +12,11 @@ dev:
 prod:
 				@$(MAKE) TARGET=prod up
 
-up:				ollama
-				@$(COMPOSE) $(FILEPATH) up -d $(SERVICES)
-
-ollama:
+up:
 ifeq ($(OS),Darwin)
-				@echo "Starting Ollama service on macOS..."
-				@ollama serve > /dev/null 2>&1 &
+				@$(COMPOSE) $(FILEPATH) up -d
+else
+				@$(COMPOSE) $(FILEPATH) --profile linux up -d
 endif
 
 down:
