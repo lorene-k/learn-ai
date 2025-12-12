@@ -44,7 +44,6 @@ make
 
 
 ## Screenshots
-
 ### Home page  
 ![Home page](./screenshots/form.png)
 
@@ -52,4 +51,4 @@ make
 ![Course page ](./screenshots/course.png)
 
 ### History page
-![History page Screenshot](./screenshots/course.png)
+![History page Screenshot](./screenshots/history.png)

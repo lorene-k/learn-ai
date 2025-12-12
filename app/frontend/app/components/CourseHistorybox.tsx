@@ -1,9 +1,10 @@
+"use client";
 import { Box } from '@mui/material';
 import { EntryButton } from './EntryButton';
-import type { CourseResponse } from '../types/types';
+import type { CourseHistory } from '../types/types';
 
 
-export function CourseHistoryBox({ courses }: { courses: CourseResponse[] }) {
+export function CourseHistoryBox({ courses }: { courses: CourseHistory[] }) {
     return (
         <Box sx={{ height: "75vh", width: "100%", overflowY: 'auto' }}>
             <Box sx={{

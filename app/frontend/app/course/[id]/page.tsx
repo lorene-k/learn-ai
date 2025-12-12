@@ -1,13 +1,14 @@
 "use client";
 import { useRouter, useParams } from "next/navigation";
 import { Typography, Box, Stack, IconButton } from "@mui/material";
-import type { CourseResponse, Chapter } from "../../types/types";
-import { useCourse } from "../../hooks/useCourse";
-import { Loader } from "../../components/Loader"
-import { CourseHeader } from "../../components/CourseHeader";
+import type { CourseResponse, Chapter } from "@/app/types/types";
+import { useCourse } from "@/app/hooks/useCourse";
+import { Loader } from "@/app/components/Loader"
+import { CourseHeader } from "@/app/components/CourseHeader";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Divider from '@mui/material/Divider';
 import { CourseChapters } from "@/app/components/CourseChapters";
+import { LoadingError } from "@/app/components/LoadingError";
 
 
 export default function ShowCourse() {
@@ -17,7 +18,7 @@ export default function ShowCourse() {
 
     if (isLoading) return <Loader message="Fetching course..." />;
     if (isError || !course)
-        return <Typography variant="h6" sx={{ mt: 4, textAlign: "center" }}>{error?.message}</Typography>;
+        return <LoadingError message={isError ? error.message : "Course can't be fetched."} />;;
 
     const { title, level, duration, description, is_favorite, chapters } = course as CourseResponse;
 

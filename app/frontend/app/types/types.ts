@@ -25,3 +25,10 @@ export interface FormData {
     level: string;
     duration: string;
 }
+
+export interface CourseHistory {
+    id: number;
+    title: string;
+    level: string;
+    duration: string;
+}

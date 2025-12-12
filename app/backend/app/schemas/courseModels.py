@@ -44,3 +44,10 @@ class UpdateCourse(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+class CourseHistory(BaseModel):
+    id: int
+    title: str
+    level: str
+    duration: int

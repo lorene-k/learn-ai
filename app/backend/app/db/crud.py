@@ -1,6 +1,5 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
-from sqlalchemy.sql import text
 from .models import Course as DbCourse
 from ..schemas.courseModels import CreateCourse, UpdateCourse
 
