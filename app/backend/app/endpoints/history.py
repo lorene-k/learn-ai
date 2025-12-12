@@ -12,6 +12,7 @@ async def get_courses(db: AsyncSession = Depends(get_db)):
     all_courses = await get_all_courses(db)
     if not all_courses:
         raise HTTPException(status_code=404, detail="Course history not found")
+    courses 
     return all_courses
 
 

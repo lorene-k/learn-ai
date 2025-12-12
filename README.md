@@ -41,3 +41,15 @@ make
 4. **Access website at:**
 > https://localhost
 - *The HTTPS connection uses a self-signed certificate: your browser may show a security warning.*
+
+
+## Screenshots
+
+### Home page  
+![Home page](./screenshots/form.png)
+
+### Course page  
+![Course page ](./screenshots/course.png)
+
+### History page
+![History page Screenshot](./screenshots/course.png)
