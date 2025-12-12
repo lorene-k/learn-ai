@@ -8,7 +8,7 @@ A simple web app designed to make learning easier by generating personalized cou
 - **Backend:** FastAPI, Python
 - **Database:** PostgreSQL
 - **Containerization:** Docker
-- **AI:** Ollama with Qwen model for text generation
+- **AI:** Ollama with Gemma language model
 
 
 ## Architecture
