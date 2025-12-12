@@ -20,7 +20,7 @@ async def create_course(db: AsyncSession, course: CreateCourse) -> DbCourse:
 
 
 async def get_all_courses(
-    db: AsyncSession, skip: int = 0, limit: int = 10
+    db: AsyncSession, skip: int = 0, limit: int = 20
 ) -> list[DbCourse]:
     res = await db.execute(select(DbCourse).offset(skip).limit(limit))
     return res.scalars().all()

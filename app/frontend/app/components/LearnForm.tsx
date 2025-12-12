@@ -48,7 +48,7 @@ export function LearnForm() {
 
     return (
         <Box>
-            <Typography variant="h2" sx={{ textAlign: 'center' }}>
+            <Typography variant="h2" sx={{ textAlign: 'center', mb: 1 }}>
                 Generate your Course
             </Typography>
             <Box component="form"

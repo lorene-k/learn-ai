@@ -7,6 +7,7 @@ import { Loader } from "../../components/Loader"
 import { CourseHeader } from "../../components/CourseHeader";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Divider from '@mui/material/Divider';
+import { CourseChapters } from "@/app/components/CourseChapters";
 
 
 export default function ShowCourse() {
@@ -35,15 +36,9 @@ export default function ShowCourse() {
                         <Typography variant="body1">{description}</Typography>
                     </Stack>
 
-                    <Divider variant="middle" flexItem sx={{ borderColor: "rgba(255, 255, 255, 0.28)", mb: 4, mt: 8 }} />
+                    <Divider variant="middle" flexItem sx={{ borderColor: "rgba(255, 255, 255, 0.28)", mb: 2, mt: 4 }} />
 
-                    <Box sx={{ mb: 4, p: 2 }}>{
-                        chapters.map((chapter: Chapter) => (
-                            <Box key={chapter.title} sx={{ mb: 2 }}>
-                                <Typography variant="h3" sx={{ mb: 1 }}>{chapter.title}</Typography>
-                                <Typography variant="body2" sx={{ mb: 3 }}>{chapter.content}</Typography>
-                            </Box>
-                        ))}</Box>
+                    <CourseChapters chapters={chapters as Chapter[]} />
                 </Box>
             </Box>
         </Box>

@@ -12,13 +12,24 @@ ollama_client = AsyncClient(host=settings.OLLAMA_URL)
 
 def set_prompt(request: CourseRequest) -> str:
     return (
-        f"Generate a {request.level} level course about {request.topic}."
-        f"It should last approximately {request.duration} minutes."
-        f"The course MUST include at least 3 chapters."
-        f"A 5-minute course has 3 chapters, adjust the number of chapters if the course lasts longer."
-        f"Each chapter must have a descriptive title and detailed content (at least 2-3 sentences). "
-        f"Provide a clear course title, short description, and well-structured chapters."
-        f"Return ONLY valid JSON matching the schema."
+        f"Create a complete course in JSON format (no extra text, no explanation). "
+        f"The course topic is: {request.topic}. "
+        f"Target level: {request.level}. "
+        f"Estimated duration: {request.duration} minutes. "
+        f"Structure requirements:\n"
+        f"- The course MUST include a clear course title.\n"
+        f"- Include a short but high-quality course description (3–5 sentences).\n"
+        f"- Include at least 3 chapters (more if duration > 5 minutes).\n"
+        f"- Each chapter must have:\n"
+        f"  - a descriptive, polished title ONLY (no numbering).\n"
+        f"  - detailed content of AT LEAST 8–12 sentences.\n"
+        f"Content rules:\n"
+        f"- Do NOT write phrases like 'In this chapter', 'Here we discuss', or any meta-commentary.\n"
+        f"- Write direct, objective explanations.\n"
+        f"- No filler sentences. No repetition.\n"
+        f"JSON rules:\n"
+        f"- Return ONLY valid JSON that matches the schema.\n"
+        f"- No markdown, no comments, no text before or after the JSON.\n"
     )
 
 
@@ -31,7 +42,9 @@ async def chat(prompt: str):
         format=CreateCourse.model_json_schema(),
         options={
             "temperature": 0.7,
-            "num_predict": 10000,
+            "num_predict": 20000,
+            "top_p": 0.9,
+            "stop": ["```"],
         },
     )
     data = CreateCourse.model_validate_json(response.message.content)

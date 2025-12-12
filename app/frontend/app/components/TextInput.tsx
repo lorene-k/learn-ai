@@ -13,10 +13,18 @@ interface TextInputProps {
 export function TextInput({ name, value, error, helperText, onChange }: TextInputProps) {
     const label = name.charAt(0).toUpperCase() + name.slice(1);
     return (
-        <FormControl error={error} sx={{ backgroundColor: 'transparent'}}>
+        <FormControl error={error} sx={{ backgroundColor: 'transparent' }}>
             <InputLabel htmlFor={name}>{label}</InputLabel>
             <OutlinedInput name={name} id={name} value={value} onChange={onChange} label={label}
-                sx={{ borderRadius: 2, backgroundColor: 'transparent', '& .MuiOutlinedInput-notchedOutline': { borderColor: 'white', },}} />
+                sx={{
+                    borderRadius: 2,
+                    '& .MuiOutlinedInput-notchedOutline': {
+                        borderColor: 'white',
+                    },
+                    "&.Mui-focused": {
+                        backgroundColor: "transparent !important",
+                    },
+                }} />
             {error && <FormHelperText>{helperText}</FormHelperText>}
         </FormControl>
     );
