@@ -4,7 +4,7 @@ A simple web app designed to make learning easier by generating personalized cou
 
 
 ## Tech Stack
-- **Frontend:** React/Next.js, TypeScript
+- **Frontend:** React/Next.js, TypeScript, MUI
 - **Backend:** FastAPI, Python
 - **Database:** PostgreSQL
 - **Containerization:** Docker
@@ -14,7 +14,7 @@ A simple web app designed to make learning easier by generating personalized cou
 ## Architecture
 - Each service runs in its own Docker container.  
 - Nginx acts as a reverse proxy, routing traffic to the correct service.  
-- The project is configured to serve all traffic over HTTPS for secure connections.
+- The project is configured to serve traffic over HTTPS for secure connections.
 
 
 1. **Installation**
